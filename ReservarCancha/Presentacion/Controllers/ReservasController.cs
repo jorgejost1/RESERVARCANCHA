@@ -63,20 +63,6 @@ public class ReservasController : ControllerBase
         }
     }
 
-    [HttpPut]
-    public IActionResult Actualizar([FromBody] Reserva reserva)
-    {
-        try
-        {
-            _actualizarReservaService.Ejecutar(reserva);
-            return Ok();
-        }
-        catch (Exception ex)
-        {
-            return BadRequest(ex.Message);
-        }
-    }
-
     [HttpPatch("{id}")]
     public IActionResult Patch(int id, [FromBody] PatchReservaDto dto)
     {
