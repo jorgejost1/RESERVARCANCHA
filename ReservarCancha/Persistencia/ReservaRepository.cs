@@ -22,17 +22,17 @@ public class ReservaRepository : IReservaRepository
     }
 
     public void Actualizar(Reserva reserva)
-{
-    var existente = ObtenerPorId(reserva.Id);
+    {
+        var existente = ObtenerPorId(reserva.Id);
 
-    if (existente == null)
-        return;
+        if (existente == null)
+            return;
 
-    existente.Cliente = reserva.Cliente;
-    existente.FechaHora = reserva.FechaHora;
-    existente.CanchaId = reserva.CanchaId;
-    existente.Cancelada = reserva.Cancelada;
-}
+        existente.Cliente = reserva.Cliente;
+        existente.FechaHora = reserva.FechaHora;
+        existente.CanchaId = reserva.CanchaId;
+        existente.Cancelada = reserva.Cancelada;
+    }
 
     public void Eliminar(int id)
     {
@@ -40,5 +40,13 @@ public class ReservaRepository : IReservaRepository
 
         if (reserva != null)
             _reservas.Remove(reserva);
+    }
+
+    public bool ExisteReserva(int canchaId, DateTime fechaHora)
+    {
+        return _reservas.Any(r =>
+            r.CanchaId == canchaId &&
+            r.FechaHora == fechaHora &&
+            !r.Cancelada);
     }
 }

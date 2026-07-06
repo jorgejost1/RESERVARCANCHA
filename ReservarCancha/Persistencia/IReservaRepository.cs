@@ -13,4 +13,6 @@ public interface IReservaRepository
     void Actualizar(Reserva reserva);
 
     void Eliminar(int id);
+
+    bool ExisteReserva(int canchaId, DateTime fechaHora);
 }
