@@ -1,5 +1,5 @@
-using ReservarCancha.Application;
 using ReservarCancha.Persistencia;
+using ReservarCancha.Application.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,7 +14,12 @@ builder.Services.AddSingleton<IReservaRepository, ReservaRepository>();
 
 builder.Services.AddSingleton<ICanchaRepository, CanchaRepository>();
 
-builder.Services.AddSingleton<ReservaService>();
+builder.Services.AddSingleton<CrearReservaService>();
+builder.Services.AddSingleton<ObtenerReservaPorIdService>();
+builder.Services.AddSingleton<ObtenerReservasService>();
+builder.Services.AddSingleton<ActualizarReservaService>();
+builder.Services.AddSingleton<PatchReservaService>();
+builder.Services.AddSingleton<EliminarReservaService>();
 
 var app = builder.Build();
 
